@@ -1,0 +1,105 @@
+<app-sidebar></app-sidebar>
+<div class="main-panel">
+  <app-topbar></app-topbar>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Role</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users; let i=index">
+                  <td>{{user.name}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.phone}}</td>
+                  <td>{{user.role}}</td>
+                  <td>
+                    <a [routerLink]="['/user', user.id]"><i class="fa fa-pencil" title="Edit"></i></a>
+                    <i class="fa fa-eye" title="View"(click)="viewUser(i)"></i>
+                    <i class="fa fa-trash" title="Delete" (click)="deleteUser(user.id,i)"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" [ngStyle]="{'display':display}" tabindex="-1" role="dialog" >
+  
+    <div class="modal-dialog" role="document">
+  
+      <div class="modal-content">
+  
+        <div class="modal-header">
+  
+          <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+  
+          <h4 class="modal-title">User Detail</h4>
+  
+        </div>
+  
+        <div class="modal-body">
+  
+          <table class="table table-bordered" *ngIf="user!=null">
+            <tbody>
+              <tr>
+                <th scope="row">Name</th>
+                <td>{{user.name}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Email</th>
+                <td>{{user.email}}</td>
+              </tr>
+              <tr>
+                <th scope="row">password</th>
+                <td>{{user.password}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Phone Number</th>
+                <td>{{user.phone}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Street</th>
+                <td>{{user.street}}</td>
+              </tr>
+              <tr>
+                <th scope="row">city</th>
+                <td>{{user.city}}</td>
+              </tr>
+              <tr>
+                <th scope="row">State</th>
+                <td>{{user.state}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Country</th>
+                <td>{{user.country}}</td>
+              </tr>
+            </tbody>
+          </table>
+  
+        </div>
+  
+        <div class="modal-footer">
+  
+          <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+  
+        </div>
+  
+      </div><!-- /.modal-content -->
+  
+    </div><!-- /.modal-dialog -->
+  
+  </div><!-- /.modal !-->

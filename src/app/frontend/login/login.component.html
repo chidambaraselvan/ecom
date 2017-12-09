@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-xs-0"></div>
+    <div class="col-md-6 col-xs-12">
+      <h2 style="text-align:center;">Log In</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" formControlName="email" class="form-control" id="email">
+          <div class="form-feedback" *ngIf = "loginForm.get('email').dirty || loginForm.get('email').touched">
+            <p class="alert alert-danger" *ngIf = "loginForm.get('email').hasError('required')">Email is Required</p>
+            <p class="alert alert-danger" *ngIf = "loginForm.get('email').hasError('email')">Please enter correct Email</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" formControlName="password" class="form-control" id="password">
+          <div class="form-feedback" *ngIf = "loginForm.get('password').dirty || loginForm.get('password').touched">
+            <p class="alert alert-danger" *ngIf = "loginForm.get('password').hasError('required')">Password is Required</p>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Log in</button>
+      </form>
+      <p><a routerLink="/register">Create an Account</a></p>
+    </div>
+    <div class="col-md-3 col-xs-0"></div>
+  </div>
+</div>
